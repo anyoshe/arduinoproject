@@ -36,21 +36,22 @@ void loop()
   }
     else {
       //Serial.println(msg1);
-      return;
+      digitalWrite(led1, LOW);
     }
      int calc2 = analogRead(switch1);
+     Serial.print("potentiometer : ");
      Serial.println(calc2);
-     int angles = map(calc2, 0, 1023, 0, 90);
-     delay(1000);
+     int angles = map(calc2, 0, 1023, 0, 94);
+ 
  if (calc2 > 0) {
-   digitalWrite(myservoP, HIGH);
+   myservo.write(angles);
    digitalWrite(led1, LOW);
    Serial.println(angles);
  }
 
  else {
    Serial.println(msg2);
-       return;
+   
  }
- 
+ delay(2000);
  }
